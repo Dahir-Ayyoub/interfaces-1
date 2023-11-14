@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootsrap/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <title>Numero de tel</title>
+    <style>
+        .espace {
+            width: 100%;
+            height: 342px;
+            background-color: #F9F6E9;
+            position: relative;
+        }
+    
+        .logo {
+            width: 100%;
+            height: 440px;
+            object-fit: contain;
+            margin-top: -120px;
+        }
+    
+        .triangle-up {
+            width: 0;
+            height: 0;
+            border-left: 174px solid transparent;
+            border-right: 174px solid transparent;
+            border-bottom: 135px solid #ffff;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            top: 210px;
+            transform: translateX(-50%);
+    
+        }
+    
+        @media (max-width: 767px) {
+            .triangle-up {
+                border-left: 174px solid transparent;
+                border-right: 174px solid transparent;
+            }
+        }
+    
+        .otp {
+            margin-bottom: 10px;
+        }
+    
+        .logo {
+            margin-bottom: 0px;
+    
+        }
+    
+        h6 {
+            color: #EF9B11;
+            /* margin-left: 40px; */
+            font-size: x-large;
+        }
+    
+        .btn {
+            background-color: #EF9B11;
+            margin-bottom: 40px;
+        }
+        .title {
+            justify-content: center;
+        }
+        .input {
+            background-color: #f9f6e9;
+        }
+        .container {
+            max-width: 350px;
+            font-size: 23px;
+            display: block;
+            margin: 50px auto;
+            background-color: white;
+            padding: 0.5px;
+            box-shadow: 0 4px 6px rgba(160, 107, 107, 0.1);
+            height: 700px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: sans-serif;
+            background-color: var(--secondary);
+        }
+        .select-box {
+            position: relative;
+            width: 26rem;
+            margin: 0.5rem auto;
+        }
+        .select-box input {
+            width: 100%;
+            padding: 1rem .6rem;
+            font-size: 1.1rem;
+            border: .1rem solid transparent;
+            outline: none;
+        }
+        input[type="tel"] {
+            border-radius: 0 .5rem .5rem 0;
+        }
+        .select-box input:focus {
+            border: .1rem solid var(--primary);
+        }
+        .selected-option {
+            background-color: #eee;
+            border-radius: .5rem;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .selected-option div {
+            position: relative;
+            width: 6rem;
+            padding: 0 2.8rem 0 .5rem;
+            text-align: center;
+            cursor: pointer;
+        }
+        .selected-option div::after {
+        position: absolute;
+        content: "";
+        right: .8rem;
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+
+        width: .8rem;
+        height: .8rem;
+        border-right: .12rem solid black;
+        border-bottom: .12rem solid black;
+
+        transition: .2s;
+    }
+
+        .selected-option div.active::after {
+            transform: translateY(-50%) rotate(225deg);
+        }
+        .select-box .options {
+            position: absolute;
+            top: 4rem;
+            width: 75%;
+            background-color: #fff;
+            border-radius: .5rem;
+            display: none;
+        }
+        .select-box .options.active {
+            display: block;
+        }
+        .select-box .options::before {
+            position: absolute;
+            content: "";
+            left: 1rem;
+            top: -1.2rem;
+            width: 0;
+            height: 0;
+            border: .6rem solid transparent;
+            border-bottom-color: var(--primary);
+        }
+        input.search-box {
+            background-color: var(--primary);
+            color: #100f0f;
+            max-height: 2rem;
+    
+            border-radius: .5rem .5rem 0 0;
+            padding: 1.4rem 1rem;
+        }
+    
+        .select-box ol {
+            list-style: none;
+            max-height: 7rem;
+            overflow: overlay;
+        }
+    
+        .select-box ol::-webkit-scrollbar {
+            width: 0.4rem;
+        }
+    
+        .select-box ol::-webkit-scrollbar-thumb {
+            width: 0.2rem;
+            height: 3rem;
+            background-color: #ccc;
+            border-radius: .4rem;
+        }
+    
+        .select-box ol li {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+    
+        .select-box ol li.hide {
+            display: none;
+        }
+    
+        .select-box ol li:not(:last-child) {
+            border-bottom: .1rem solid #eee;
+        }
+    
+        .select-box ol li:hover {
+            background-color: lightcyan;
+        }
+    
+        .select-box ol li .country-name {
+            margin-left: .4rem;
+        }
+        /* .div{
+            display: flex;
+            justify-content: space-between;
+            
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="espace">
+            <img src="./images/logo.svg" class="logo">
+            <div class="triangle-up"></div>
+        </div>
+        <div class="col-12 d-flex align-items-center justify-content-center ">
+            <h6 class="otp">
+                OTP verification
+            </h6>
+        </div>
+        <div class="row">
+            <form class="mx-3">
+                <div class="select-box">
+                    <div class="selected-option col-9 mb-5">
+                        <div class="col-3 div">
+                            <span class="iconify" data-icon="flag:ma-4x3"></span>
+                            <!-- <strong>+212</strong> -->
+                        </div>
+                        <input type="tel" name="tel" placeholder="Phone Number" style="background-color: #F9F6E9;">
+                    </div>
+                    <div class="options">
+                        <input type="text" class="search-box" placeholder="Search Country Name">
+                        <ol>
+
+                        </ol>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row ">
+            <div class="col">
+
+            </div>
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <button type="submit" class="  btn col-11 botton ">Envoye-sms</button>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+<script>
+
+    const countries = [
+        { name: "Morocco", code: "MA", phone: 212 },
+        { name: "Algeria", code: "DZ", phone: 213 },
+        { name: "Tunisia", code: "TN", phone: 216 },
+        { name: "Egypt", code: "EG", phone: 20 },
+        { name: "Spain", code: "ES", phone: 34 },
+        { name: "Italy", code: "IT", phone: 39 },
+        { name: "France", code: "FR", phone: 33 },
+        { name: "Qatar", code: "QA", phone: 974 }
+        // { name: "Russian Federation", code: "RU", phone: 7 }
+
+    ],
+
+        select_box = document.querySelector('.options'),
+        search_box = document.querySelector('.search-box'),
+        input_box = document.querySelector('input[type="tel"]'),
+        selected_option = document.querySelector('.selected-option div');
+
+    let options = null;
+
+    for (country of countries) {
+        const option = `
+    <li class="option">
+        <div>
+            <span class="iconify" data-icon="flag:${country.code.toLowerCase()}-4x3"></span>
+            <span class="country-name">${country.name}</span>
+        </div>
+        <strong>+${country.phone}</strong>
+    </li> `;
+
+        select_box.querySelector('ol').insertAdjacentHTML('beforeend', option);
+        options = document.querySelectorAll('.option');
+    }
+
+    function selectOption() {
+        const icon = this.querySelector('.iconify').cloneNode(true),
+            phone_code = this.querySelector('strong').cloneNode(true);
+
+        selected_option.innerHTML = '';
+        selected_option.append(icon);
+        
+        // Exclude phone code from innerHTML
+        input_box.value =  phone_code.innerText;
+
+        select_box.classList.remove('active');
+        selected_option.classList.remove('active');
+
+        search_box.value = '';
+        select_box.querySelectorAll('.hide').forEach(el => el.classList.remove('hide'));
+    }
+
+    function searchCountry() {
+        let search_query = search_box.value.toLowerCase();
+        for (option of options) {
+            let is_matched = option.querySelector('.country-name').innerText.toLowerCase().includes(search_query);
+            option.classList.toggle('hide', !is_matched)
+        }
+    }
+
+
+    selected_option.addEventListener('click', () => {
+        select_box.classList.toggle('active');
+        selected_option.classList.toggle('active');
+    })
+
+    options.forEach(option => option.addEventListener('click', selectOption));
+    search_box.addEventListener('input', searchCountry);
+
+</script>
+
+</html>
